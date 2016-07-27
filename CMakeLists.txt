@@ -1,6 +1,7 @@
 cmake_minimum_required (VERSION 2.6)
 project (GameServer)
 
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 set (GameServer_VERSION_MAJOR 0)
@@ -22,5 +23,5 @@ configure_file (
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories ("${PROJECT_SOURCE_DIR}/ENet-1.3.13")
 
-add_executable(GameServer main.cpp)
+add_executable(GameServer main.cpp GameServer.cpp GameServer.h)
 target_link_libraries(GameServer ${LIBS})
