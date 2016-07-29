@@ -19,9 +19,9 @@ GameServer::GameServer() {
   address.host = ENET_HOST_ANY;
 
   // Bind the server to port 1234.
-  address.port = 1234;
+  address.port = PORT;
 
-  server = enet_host_create(&address, 32, 2, 0, 0);
+  server = enet_host_create(&address, MAX_CONNECTIONS, MAX_CHANNELS, INCOMING_BANDWIDTH, OUTGOING_BANDWIDTH);
   if (server == nullptr) {
     fprintf(stderr, "An error occurred while trying to create an ENet server host.\n");
      exit(EXIT_FAILURE);
