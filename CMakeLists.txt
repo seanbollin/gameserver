@@ -21,6 +21,7 @@ include_directories(${ENet_INCLUDE_DIRS})
 
 add_executable(gs ${SOURCE_FILES})
 
+add_subdirectory(client)
 add_subdirectory(gameserver)
 add_subdirectory(gameserver_tests)
 
