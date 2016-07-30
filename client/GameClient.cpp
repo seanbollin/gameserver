@@ -1,14 +1,8 @@
-//
-// Created by Sean Bollin on 7/28/16.
-//
-
 #include <cstdio>
 #include <iostream>
 #include "GameClient.h"
 
 GameClient::GameClient() {
-  std::cout << "Constructing game client\n";
-
   client = enet_host_create(
           nullptr, // client specified by giving no host to bind to
           OUTGOING_CONNECTIONS,
@@ -24,12 +18,10 @@ GameClient::GameClient() {
 }
 
 void GameClient::Connect() {
-  ENetAddress address;
   ENetEvent event;
 
-  // Connect to some.server.net:1234.
-  enet_address_set_host(&address, "localhost");
-  address.port = 1234;
+  enet_address_set_host(&address, serverUrl.c_str());
+  address.port = PORT;
 
   // Initiate the connection, allocating the two channels 0 and 1.
   peer = enet_host_connect(client, &address, 2, 0);
@@ -38,15 +30,11 @@ void GameClient::Connect() {
     exit(EXIT_FAILURE);
   }
 
-  // Wait up to 5 seconds for the connection attempt to succeed.
-  if (enet_host_service(client, &event, 5000) > 0 && event.type == ENET_EVENT_TYPE_CONNECT) {
-    puts("Connection to some.server.net:1234 succeeded.");
+  if (enet_host_service(client, &event, CONNECT_TIMEOUT) > 0 && event.type == ENET_EVENT_TYPE_CONNECT) {
+    std::cout << "Connection to " << serverUrl << ":" << PORT << " succeeded";
   } else {
-    // Either the 5 seconds are up or a disconnect event was
-    // received. Reset the peer in the event the 5 seconds
-    // had run out without any significant event.
     enet_peer_reset(peer);
-    puts("Connection to some.server.net:1234 failed.");
+    std::cout << "Connection to " << serverUrl << ":" << PORT << " failed";
   }
 }
 
