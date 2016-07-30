@@ -1,7 +1,3 @@
-//
-// Created by Sean Bollin on 7/28/16.
-//
-
 #ifndef GAMESERVER_GAMECLIENT_H
 #define GAMESERVER_GAMECLIENT_H
 #include "enet/enet.h"
