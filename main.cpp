@@ -4,5 +4,11 @@
 int main(int argc, char* argv[]) {
   GameServer gameServer;
 
+  bool gameLoop = true;
+
+  while(gameLoop) {
+    gameServer.Poll();
+  }
+
   return 0;
 }

@@ -7,6 +7,7 @@
 class GameServer {
 public:
   GameServer();
+  void Poll();
   ~GameServer();
 private:
   static const int PORT{1234};
@@ -14,6 +15,7 @@ private:
   static const int MAX_CHANNELS{2};
   static const int INCOMING_BANDWIDTH{0};
   static const int OUTGOING_BANDWIDTH{0};
+  static const int POLL_TIMEOUT{0};
 
   ENetHost* server{nullptr};
 };
