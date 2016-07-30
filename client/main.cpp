@@ -3,7 +3,8 @@
 
 int main(int argc, char* argv[]) {
   GameClient gameClient;
-
+  gameClient.Connect();
+  gameClient.SendPacket();
   return 0;
 }
 

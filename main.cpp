@@ -4,5 +4,9 @@
 int main(int argc, char* argv[]) {
   GameServer gameServer;
 
+  while(true) {
+    gameServer.Poll();
+  }
+
   return 0;
 }
