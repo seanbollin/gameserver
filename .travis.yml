@@ -7,8 +7,6 @@ before_install:
 
 env:
   global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
    - secure: "TqFLyPgwKPu8HCy2m7MeCtkon+ZdeeAcaTGS1XL+XlVX8VwXXMNIG7MuVoQTLAMZkqy5LA1QrVwzaEjJdpu56m9ssblQeLfokV+Jn84CRnQrQFp/fyUppPxtE0ke2hhH+913BJqIQ0kT51GoKXezgKrjaP6fBegzGb1cCUURhr84wn2aUeA3imAuF+k9oAbS15N42JFa3GlHeLMJ5k8XyI/DoagKSZND4uUV9uYNgZNrZRAdEira0u/8WFMjmSbyzHmk96WN2prVDSgqMjeeIX+7z9P2Snc/iJDVkFaYdEjNE3t6JwcvKR8SQIuqZLqIZ/nRCC/mRWPUVxXygULOCkiEp4nU6P49uTCgab7xi7wbDLONTql0GPTNkeMCHyy9yDUJo3WrOJf7bDdCfJsoAtJqUeVseImHzKy8zJCL97Nw04HP9pUwHPeDhY29KXNjlE0LJn5ReS8PIjxyLvsFwSf0QTyEzwtF15rSYH08Uatfv+R7zY/8xLjvZxVZ+5qZ+MhAW+3IxgzdvTJST0RyWuGrA+QGva5ZIiuMXTgG4PhHkiGk4ytUcspx7hJKUj89claFas63wtjT9pZMFHsn8QdznQk2PBcBEvJXOjqjXw4BUr6BOuVKPTnrNGKL9KRtp8spuI2Q/vIXHQmzQSfQ5yQEtWDqQES3M76oulBFKC4="
 
 addons:
@@ -27,10 +25,9 @@ compiler:
   - clang
   - gcc
 
-# install enet
-
 script: 
   - mkdir build 
   - cd build 
   - cmake .. 
   - cmake --build .
+  - gameserver_tests/basic_tests/run_tests
