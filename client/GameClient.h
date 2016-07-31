@@ -1,7 +1,7 @@
 #ifndef GAMESERVER_GAMECLIENT_H
 #define GAMESERVER_GAMECLIENT_H
 #include "enet/enet.h"
-#include <string>
+#include <string.h>
 
 class GameClient {
 public:
