@@ -8,7 +8,7 @@ class GameServer {
 public:
   GameServer();
   void Poll();
-  ~GameServer();
+  virtual ~GameServer();
 private:
   static const int PORT{1234};
   static const int MAX_CONNECTIONS{32};

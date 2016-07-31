@@ -8,7 +8,7 @@ public:
   GameClient();
   void Connect();
   void SendPacket();
-  ~GameClient();
+  virtual ~GameClient();
 private:
   const std::string serverUrl = "localhost";
   static const int PORT = 1234;

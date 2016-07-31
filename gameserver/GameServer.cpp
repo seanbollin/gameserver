@@ -43,20 +43,24 @@ void GameServer::Poll() {
         // event.peer->data = (void*) "Client information";
         break;
       case ENET_EVENT_TYPE_RECEIVE:
-        printf ("A packet of length %u containing %s was received from %s on channel %u.\n",
-                event.packet -> dataLength,
-                event.packet -> data,
-                event.peer -> data,
+        printf ("A packet of length %zu containing %s was received from %s on channel %u.\n",
+                event.packet->dataLength,
+                event.packet->data,
+                event.peer->data,
                 event.channelID);
-        /* Clean up the packet now that we're done using it. */
+        // Clean up the packet now that we're done using it.
         enet_packet_destroy (event.packet);
-
         break;
 
       case ENET_EVENT_TYPE_DISCONNECT:
         printf ("%s disconnected.\n", event.peer -> data);
-        /* Reset the peer's client information. */
+        // Reset the peer's client information.
         event.peer -> data = NULL;
+        break;
+
+      case ENET_EVENT_TYPE_NONE:
+        // remove compiler warning, do nothing
+        break;
     }
   }
 }

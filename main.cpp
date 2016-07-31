@@ -1,7 +1,7 @@
 // Copyright (c) 2016 Sean Bollin
 #include "gameserver/GameServer.h"
 
-int main(int argc, char* argv[]) {
+int main() {
   GameServer gameServer;
 
   bool gameLoop = true;
