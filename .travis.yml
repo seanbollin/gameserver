@@ -1,0 +1,20 @@
+sudo: required
+dist: trusty
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libenet-dev
+
+language: cpp
+
+compiler:
+  - clang
+  - gcc
+
+# install enet
+
+script: 
+  - mkdir build 
+  - cd build 
+  - cmake .. 
+  - cmake --build .
