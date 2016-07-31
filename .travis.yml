@@ -1,0 +1,16 @@
+sudo: required
+dist: trusty
+
+language: cpp
+
+compiler:
+  - clang
+  - gcc
+
+# install enet
+
+script: 
+  - mkdir build 
+  - cd build 
+  - cmake .. 
+  - cmake --build .
