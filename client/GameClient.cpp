@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <iostream>
 #include "GameClient.h"
+#include <cstring>
 
 GameClient::GameClient() {
   client = enet_host_create(
