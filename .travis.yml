@@ -1,6 +1,10 @@
 sudo: required
 dist: trusty
 
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libenet-dev
+
 language: cpp
 
 compiler:
