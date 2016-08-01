@@ -1,4 +1,3 @@
-// Copyright (c) 2016 Sean Bollin
 #include "GameClient.h"
 
 int main() {

@@ -1,4 +1,3 @@
-// Copyright (c) 2016 Sean Bollin
 #include "gameserver/GameServer.h"
 
 int main() {
