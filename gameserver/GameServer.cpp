@@ -1,9 +1,12 @@
 #include "GameServer.h"
 #include "GameServerConfig.h"
 #include <iostream>
+#include "include/spdlog/spdlog.h"
 
 GameServer::GameServer() {
-  std::cout << "GameServer version: " << GameServer_VERSION_MAJOR << "." << GameServer_VERSION_MINOR << "\n";
+
+  auto console = spdlog::stdout_logger_st("console", true);
+  console->info("Game version: {}.{}", GameServer_VERSION_MAJOR, GameServer_VERSION_MINOR);
 
   if (enet_initialize() != 0) {
     fprintf(stderr, "An error occurred while initializing ENet.\n");
@@ -23,37 +26,35 @@ GameServer::GameServer() {
 
   server = enet_host_create(&address, MAX_CONNECTIONS, MAX_CHANNELS, INCOMING_BANDWIDTH, OUTGOING_BANDWIDTH);
   if (server == nullptr) {
-    fprintf(stderr, "An error occurred while trying to create an ENet server host.\n");
-     exit(EXIT_FAILURE);
+    console->error("An error occurred while trying to create an ENet server host.");
+    exit(EXIT_FAILURE);
   }
 }
 
 void GameServer::Poll() {
   ENetEvent event;
 
-  while(enet_host_service(server, &event, POLL_TIMEOUT) > 0)
-  {
-    switch (event.type)
-    {
+  while (enet_host_service(server, &event, POLL_TIMEOUT) > 0) {
+    switch (event.type) {
       case ENET_EVENT_TYPE_CONNECT:
-        printf ("A new client connected from %x:%u.\n",
+        printf("A new client connected from %x:%u.\n",
                 event.peer -> address.host,
                 event.peer -> address.port);
         // Store any relevant client information here.
         // event.peer->data = (void*) "Client information";
         break;
       case ENET_EVENT_TYPE_RECEIVE:
-        printf ("A packet of length %zu containing %s was received from %s on channel %u.\n",
+        printf("A packet of length %zu containing %s was received from %s on channel %u.\n",
                 event.packet->dataLength,
                 event.packet->data,
                 event.peer->data,
                 event.channelID);
         // Clean up the packet now that we're done using it.
-        enet_packet_destroy (event.packet);
+        enet_packet_destroy(event.packet);
         break;
 
       case ENET_EVENT_TYPE_DISCONNECT:
-        printf ("%s disconnected.\n", event.peer -> data);
+        printf("%s disconnected.\n", event.peer -> data);
         // Reset the peer's client information.
         event.peer -> data = NULL;
         break;
