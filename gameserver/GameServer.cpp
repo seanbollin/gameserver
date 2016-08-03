@@ -1,9 +1,12 @@
 #include "GameServer.h"
 #include "GameServerConfig.h"
 #include <iostream>
+#include "include/spdlog/spdlog.h"
 
 GameServer::GameServer() {
-  std::cout << "GameServer version: " << GameServer_VERSION_MAJOR << "." << GameServer_VERSION_MINOR << "\n";
+
+  auto console = spdlog::stdout_logger_st("console", true);
+  console->info("Game version: {}.{}", GameServer_VERSION_MAJOR, GameServer_VERSION_MINOR);
 
   if (enet_initialize() != 0) {
     fprintf(stderr, "An error occurred while initializing ENet.\n");
@@ -23,8 +26,8 @@ GameServer::GameServer() {
 
   server = enet_host_create(&address, MAX_CONNECTIONS, MAX_CHANNELS, INCOMING_BANDWIDTH, OUTGOING_BANDWIDTH);
   if (server == nullptr) {
-    fprintf(stderr, "An error occurred while trying to create an ENet server host.\n");
-     exit(EXIT_FAILURE);
+    console->error("An error occurred while trying to create an ENet server host.");
+    exit(EXIT_FAILURE);
   }
 }
 
