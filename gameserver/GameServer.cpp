@@ -4,7 +4,6 @@
 #include "include/spdlog/spdlog.h"
 
 GameServer::GameServer() {
-
   auto console = spdlog::stdout_logger_st("console", true);
   console->info("Game version: {}.{}", GameServer_VERSION_MAJOR, GameServer_VERSION_MINOR);
 
