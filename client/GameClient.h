@@ -1,15 +1,15 @@
-#ifndef GAMESERVER_GAMECLIENT_H
-#define GAMESERVER_GAMECLIENT_H
-#include "enet/enet.h"
+#ifndef CLIENT_GAMECLIENT_H_
+#define CLIENT_GAMECLIENT_H_
 #include <string>
+#include "enet/enet.h"
 
 class GameClient {
-public:
+ public:
   GameClient();
   void Connect();
   void SendPacket();
   virtual ~GameClient();
-private:
+ private:
   const std::string serverUrl = "localhost";
   static const int PORT = 1234;
 
@@ -25,4 +25,4 @@ private:
 };
 
 
-#endif //GAMESERVER_GAMECLIENT_H
+#endif  // CLIENT_GAMECLIENT_H_

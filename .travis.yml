@@ -26,7 +26,7 @@ compiler:
   - gcc
 
 script: 
-  - python cpplint.py --linelength=120 --counting=detailed $( find gameserver client -name *.h -or -name *.cpp )
+  - python cpplint.py --filter=-legal/copyright,-build/include --linelength=120 --counting=detailed $( find gameserver client -name *.h -or -name *.cpp )
   - mkdir build 
   - cd build 
   - cmake .. 

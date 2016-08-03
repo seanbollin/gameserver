@@ -5,12 +5,11 @@
 
 GameClient::GameClient() {
   client = enet_host_create(
-          nullptr, // client specified by giving no host to bind to
+          nullptr,  // client specified by giving no host to bind to
           OUTGOING_CONNECTIONS,
           MAX_CHANNELS,
           INCOMING_BANDWIDTH,
-          OUTGOING_BANDWIDTH
-  );
+          OUTGOING_BANDWIDTH);
 
   if (client == nullptr) {
     fprintf(stderr, "An error occurred while trying to create an ENet client host.\n");

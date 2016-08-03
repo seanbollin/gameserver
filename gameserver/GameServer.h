@@ -1,15 +1,15 @@
-#ifndef GAMESERVER_GAMESERVER_H
-#define GAMESERVER_GAMESERVER_H
+#ifndef GAMESERVER_GAMESERVER_H_
+#define GAMESERVER_GAMESERVER_H_
 
 
 #include <enet/enet.h>
 
 class GameServer {
-public:
+ public:
   GameServer();
   void Poll();
   virtual ~GameServer();
-private:
+ private:
   static const int PORT{1234};
   static const int MAX_CONNECTIONS{32};
   static const int MAX_CHANNELS{2};
@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif //GAMESERVER_GAMESERVER_H
+#endif  // GAMESERVER_GAMESERVER_H_
