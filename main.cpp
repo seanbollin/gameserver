@@ -1,13 +1,18 @@
 #include "gameserver/GameServer.h"
+#include "spdlog/spdlog.h"
+#include <sstream>
 
-int main() {
-  GameServer gameServer;
+int main(int argc, char* argv[]) {
+  auto console = spdlog::stdout_logger_st("main", true);
 
-  bool gameLoop = true;
-
-  while(gameLoop) {
-    gameServer.Poll();
+  if (argc < 2) {
+    console->error("usage: {} <frameRate>", argv[0]);
   }
 
-  return 0;
+  std::istringstream ss(argv[1]);
+  int frameRate;
+  ss >> frameRate;
+
+  GameServer gameServer{frameRate};
+  gameServer.Start();
 }

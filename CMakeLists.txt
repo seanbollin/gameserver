@@ -9,7 +9,7 @@ set(GameServer_VERSION_MINOR 1)
 
 find_package(ENet REQUIRED)
 
-include_directories(${ENet_INCLUDE_DIRS})
+include_directories(${ENet_INCLUDE_DIRS} gameserver/include)
 
 add_subdirectory(client)
 add_subdirectory(gameserver)
