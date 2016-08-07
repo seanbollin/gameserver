@@ -36,7 +36,7 @@ void GameServer::Start() {
     Poll();
 
     auto loop_time = clock::now() - time_start;
-    std::this_thread::sleep_for(std::chrono::milliseconds(frameRate) - loop_time);
+    std::this_thread::sleep_for(ms(frameRate) - loop_time);
     // std::chrono::duration<double> diff = clock::now() - time_start;
   }
 }

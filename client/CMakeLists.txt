@@ -1,5 +1,8 @@
 project(Client)
 
-add_executable(client main.cpp GameClient.cpp)
+include(conanbuildinfo.cmake)
+conan_basic_setup()
 
-target_link_libraries(client ${ENet_LIBRARIES})
+add_executable(client main.cpp Network.h Network.cpp Client.cpp Client.h)
+
+target_link_libraries(client ${ENet_LIBRARIES} ${CONAN_LIBS})

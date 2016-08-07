@@ -1,9 +1,8 @@
 #include <cstdio>
 #include <iostream>
-#include "GameClient.h"
-#include <cstring>
+#include "Network.h"
 
-GameClient::GameClient() {
+Network::Network() {
   client = enet_host_create(
           nullptr,  // client specified by giving no host to bind to
           OUTGOING_CONNECTIONS,
@@ -17,7 +16,7 @@ GameClient::GameClient() {
   }
 }
 
-void GameClient::Connect() {
+void Network::Connect() {
   ENetEvent event;
 
   enet_address_set_host(&address, serverUrl.c_str());
@@ -38,7 +37,7 @@ void GameClient::Connect() {
   }
 }
 
-void GameClient::SendPacket() {
+void Network::SendPacket() {
   // packet deallocated with enet_peer_send
   ENetPacket* packet = enet_packet_create("packet", strlen("packet") + 1, ENET_PACKET_FLAG_RELIABLE);
 
@@ -49,6 +48,6 @@ void GameClient::SendPacket() {
   enet_host_flush(client);
 }
 
-GameClient::~GameClient() {
+Network::~Network() {
   enet_host_destroy(client);
 }

@@ -1,3 +1,5 @@
+conanbuildinfo.cmake*
+conaninfo.txt*
 .idea
 CMakeCache.txt
 CMakeFiles

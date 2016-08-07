@@ -1,17 +1,17 @@
-#ifndef CLIENT_GAMECLIENT_H_
-#define CLIENT_GAMECLIENT_H_
+#ifndef CLIENT_NETWORK_H_
+#define CLIENT_NETWORK_H_
 #include <string>
 #include "enet/enet.h"
 
-class GameClient {
+class Network {
  public:
-  GameClient();
+  Network();
   void Connect();
   void SendPacket();
-  virtual ~GameClient();
+  virtual ~Network();
  private:
-  const std::string serverUrl = "localhost";
-  static const int PORT = 1234;
+  std::string serverUrl{"localhost"};
+  static const int PORT{1234};
 
   ENetHost* client{nullptr};
   ENetPeer* peer{nullptr};
@@ -25,4 +25,4 @@ class GameClient {
 };
 
 
-#endif  // CLIENT_GAMECLIENT_H_
+#endif  // CLIENT_NETWORK_H_

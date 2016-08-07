@@ -1,0 +1,5 @@
+[requires]
+SDL2/2.0.4@lasote/stable
+
+[generators]
+cmake

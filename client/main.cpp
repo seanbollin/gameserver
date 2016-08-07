@@ -1,9 +1,10 @@
-#include "GameClient.h"
+#include "Network.h"
+#include "Client.h"
 
 int main() {
-  GameClient gameClient;
-  gameClient.Connect();
-  gameClient.SendPacket();
-  return 0;
+  Network* network = new Network();
+  Client client{network};
+
+  return client.Execute();
 }
 
