@@ -3,13 +3,15 @@
 Client::Client(Network* network) : network(network) {}
 
 int Client::Execute() {
+  spdlog::set_level(spdlog::level::debug);
+
   if(Init() == false) {
     return -1;
   }
 
   SDL_Event event;
 
-  while(running) {
+  while(!quit) {
     while(SDL_PollEvent(&event)) {
       OnEvent(&event);
     }
@@ -42,8 +44,6 @@ bool Client::Init() {
 
       network->Connect();
       network->SendPacket();
-
-      SDL_Delay(2000);
     }
   }
 
@@ -51,7 +51,8 @@ bool Client::Init() {
 }
 
 void Client::OnEvent(SDL_Event* event) {
-
+  console->debug("Received SDL_Event type {}", event->type);
+  if (event->type == SDL_QUIT) quit = true;
 }
 
 void Client::Loop() { }

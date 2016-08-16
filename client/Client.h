@@ -17,7 +17,7 @@ public:
 private:
   void OnEvent(SDL_Event* Event);
 
-  bool running{false};
+  bool quit{false};
   SDL_Window* window{nullptr};
   SDL_Surface* surface{nullptr};
 
