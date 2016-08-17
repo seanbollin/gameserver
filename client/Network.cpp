@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <iostream>
 #include "Network.h"
+#include <cstring>
 
 Network::Network() {
   client = enet_host_create(
