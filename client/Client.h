@@ -1,20 +1,20 @@
-#ifndef GAMESERVER_CAPP_H
-#define GAMESERVER_CAPP_H
+#ifndef CLIENT_CLIENT_H_
+#define CLIENT_CLIENT_H_
 
 #include <SDL.h>
 #include "Network.h"
 #include "spdlog/spdlog.h"
 
 class Client {
-public:
-  Client(Network* network);
+ public:
+  explicit Client(Network* network);
   virtual ~Client();
   int Execute();
   bool Init();
   void Loop();
   void Render();
   void Cleanup();
-private:
+ private:
   void OnEvent(SDL_Event* Event);
 
   bool quit{false};
@@ -29,4 +29,4 @@ private:
   std::shared_ptr<spdlog::logger> console{spdlog::stdout_logger_st("GameServer", true)};
 };
 
-#endif //GAMESERVER_CAPP_H
+#endif  // CLIENT_CLIENT_H_
