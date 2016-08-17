@@ -32,7 +32,7 @@ compiler:
 
 script:
   - python cpplint.py --filter=-legal/copyright,-build/include --linelength=120 --counting=detailed $( find gameserver client  -type d \( -path gameserver/include \) -prune -o -name *.h -or -name *.cpp )
-  - conan install client/
+  - conan install client/ --build zlib
   - mkdir build
   - cd build 
   - cmake .. 

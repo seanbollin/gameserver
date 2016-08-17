@@ -3,7 +3,7 @@
 Client::Client(Network* network) : network(network) {}
 
 int Client::Execute() {
-  spdlog::set_level(spdlog::level::debug);
+  // spdlog::set_level(spdlog::level::debug);
 
   if(Init() == false) {
     return -1;
