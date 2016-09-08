@@ -7,4 +7,4 @@ add_library(client STATIC Network.cpp Client.cpp visuals/Dot.cpp)
 
 add_executable(gameclient main.cpp)
 
-target_link_libraries(gameclient ${ENet_LIBRARIES} ${CONAN_LIBS} client)
+target_link_libraries(gameclient client ${ENet_LIBRARIES} ${CONAN_LIBS})
