@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Dot.h"
 
-void Dot::handleEvent(SDL_Event& e) {
+void Dot::handleEvent(const SDL_Event& e) {
 
   if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
     std::cout << "here we go: " << e.type << " " << e.key.keysym.sym << std::endl;
