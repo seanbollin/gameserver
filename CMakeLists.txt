@@ -12,6 +12,7 @@ find_package(ENet REQUIRED)
 include_directories(${ENet_INCLUDE_DIRS} gameserver/include)
 
 add_subdirectory(client)
+add_subdirectory(client_tests)
 add_subdirectory(gameserver)
 add_subdirectory(gameserver_tests)
 
