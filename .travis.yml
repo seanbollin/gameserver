@@ -35,6 +35,6 @@ script:
   - conan install client/ --build zlib
   - mkdir build
   - cd build 
-  - cmake .. 
+  - cmake -DCMAKE_VERBOSE_MAKEFILE=ON ..
   - cmake --build .
   - gameserver_tests/basic_tests/run_tests
